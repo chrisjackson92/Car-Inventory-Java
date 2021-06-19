@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package classproject;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,16 +7,15 @@ import java.util.Scanner;
  * @author chris
  */
 public class ClassProject {
-
-    /**
-     * @param args the command line arguments
-     */
+    
+    static Scanner input = new Scanner(System.in);
+    
     public static void main(String[] args) {
         // TODO code application logic here
-        Scanner input = new Scanner(System.in);
+        
         
         ArrayList<Car> carList = new ArrayList<>();
-        int menuSelection = 0;
+        int userMenuSelection = 0;
         int objectCount = 0;
         do{
             System.out.println("Menu Options \n"
@@ -32,9 +27,14 @@ public class ClassProject {
                     + "6. Get average mileage from all the cars.\n"
                     + "7. Get cash offer for a car.\n");
             System.out.println("Please enter the number of the action to perform or 0 to end the program.");
-            menuSelection = input.nextInt();
+            userMenuSelection = input.nextInt();
+            menuSelection(userMenuSelection, carList);
             
-            if (menuSelection == 1){
+        }while(userMenuSelection != 0);
+    }
+    
+    static public void menuSelection(int menuSelection, ArrayList<Car> carList){
+        if (menuSelection == 1){
                 System.out.println("Enter vin number of the new car.");
                 String vin1 = input.next();
                 System.out.println("Enter model of the new car.");
@@ -135,11 +135,8 @@ public class ClassProject {
                                     + "discount: $%.2f%n"
                                     + "New price: $%.2f%n%n",car.getModel(), currentPrice, 500.0, discountPrice);
                 }
-                
             }
-    }while(menuSelection != 0);
-        }
-
+    }
     
 }
 /*
