@@ -8,141 +8,141 @@ package classproject;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.InputMismatchException;
+
 /**
  *
  * @author chris
  */
 public class Car {
     Scanner input = new Scanner(System.in);
-    
-    //members of the class
+
+    // members of the class
     private String vin = "";
     private String model = "";
-    private int year ;
+    private int year;
     private double mileage;
-    private double price ;
-    
-    //define class in constructor
-    public Car(String vin, String model, int year, double mileage, double price){
-        
-        //set definitions to the attributes
-    this.vin = vin;
-    this.model = model;
-    if(year > 1970){
-        this.year = year;
+    private double price;
+
+    public Car() {
+
     }
-    if(mileage >= 0){
-        this.mileage = mileage;
+
+    // define class in constructor
+    public Car(String vin, String model, int year, double mileage, double price) {
+
+        // set definitions to the attributes
+        this.vin = vin;
+        this.model = model;
+        if (year > 1970) {
+            this.year = year;
+        }
+        if (mileage >= 0) {
+            this.mileage = mileage;
+        }
+        if (price > 1000) {
+            this.price = price;
+        }
     }
-    if(price > 1000){
-        this.price = price;
+
+    public String getVin() { // public (return type) method name with parenthesis
+        return vin; // return the member;
     }
-    }
-    
-    
-    public String getVin(){            //public (return type) method name with parenthesis
-        return vin;                    //return the member;
-    }
-    public void setVin(String vin){
+
+    public void setVin(String vin) {
         this.vin = vin;
     }
-    
-    public String getModel(){
+
+    public String getModel() {
         return model;
     }
-    public void setModel(String model){
+
+    public void setModel(String model) {
         this.model = model;
     }
-    
+
     public double getYear() {
-      return year; 
+        return year;
     }
-    public void setYear(int year) throws InputMismatchException{
+
+    public void setYear(int year) throws InputMismatchException {
         this.year = year;
     }
-    
-    public double getMileage(){
+
+    public double getMileage() {
         return mileage;
     }
-    public void setMileage(double mileage) throws InputMismatchException{
+
+    public void setMileage(double mileage) throws InputMismatchException {
         this.mileage = mileage;
     }
-    
-    public double getPrice(){
+
+    public double getPrice() {
         return price;
     }
-    public void setPrice(double price) throws InputMismatchException{
+
+    public void setPrice(double price) throws InputMismatchException {
         this.price = price;
     }
-    
-    
-    public String toString(){
-        return String.format("Vin: %s %nModel: %s %nYear: %s %nMileage: %s %nPrice: %s %n%n", vin, model, year, mileage, price);
+
+    public String toString() {
+        return String.format("Vin: %s %nModel: %s %nYear: %s %nMileage: %s %nPrice: %s %n%n", vin, model, year, mileage,
+                price);
     }
-    
-     public void makeChange(int changeThis){
-        
-        if (changeThis == 1){
+
+    public void makeChange(int changeThis) {
+
+        if (changeThis == 1) {
             System.out.println("Enter new vin number: ");
             String newVin = input.next();
             setVin(newVin);
         }
-        
-        if (changeThis == 2){
+
+        if (changeThis == 2) {
             System.out.println("Enter new model number: ");
             String newModel = input.next();
             setModel(newModel);
         }
-        
-        if (changeThis == 3){
-            
+
+        if (changeThis == 3) {
+
             System.out.println("Enter new year number: ");
-            try
-            {
+            try {
                 int newYear = input.nextInt();
                 setYear(newYear);
-            }
-            catch(InputMismatchException e)
-            {
+            } catch (InputMismatchException e) {
                 input.next();
-                 System.out.println("Please enter a whole  number.");
+                System.out.println("Please enter a whole  number.");
                 int newYear = input.nextInt();
                 setYear(newYear);
             }
-            
+
         }
-        
-        if (changeThis == 4){
+
+        if (changeThis == 4) {
             System.out.println("Enter new mileage number: ");
-            try
-            {
+            try {
                 double newMileage = input.nextDouble();
                 setMileage(newMileage);
-            }
-            catch(InputMismatchException e)
-            {
+            } catch (InputMismatchException e) {
                 input.next();
                 System.out.println("Please enter a positive number.");
                 double newMileage = input.nextDouble();
                 setMileage(newMileage);
             }
         }
-        
-        if (changeThis == 5){
+
+        if (changeThis == 5) {
             System.out.println("Enter new price number: ");
-            try
-            {
+            try {
                 double newPrice = input.nextDouble();
                 setPrice(newPrice);
-            }
-            catch(InputMismatchException e)
-            {
+            } catch (InputMismatchException e) {
                 input.next();
                 System.out.println("Please enter a number above 1000.");
                 double newPrice = input.nextDouble();
                 setPrice(newPrice);
             }
-            
+
         }
     }
 }
